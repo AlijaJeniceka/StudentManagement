@@ -16,12 +16,11 @@ public class login {
 
     public static boolean addNewUser() {
         //Prompt the user for data
-        System.out.print("Enter login: ");
+        System.out.print("Enter username: ");
         String login = sc.next();
 
         System.out.print("Enter password: ");
         String password = sc.next();
-
 
         try {
             // Inserts users to the table.
@@ -31,42 +30,41 @@ public class login {
             ps.execute();
             return true;
         } catch(SQLException e) {
-            e.printStackTrace();
+         //   e.printStackTrace();
+            System.out.println("Unable to sign up, username probably exist. Try another one.");
             return false;
         }
 
     }
-
-    public static boolean loginIn() {
-        System.out.print("Enter your username to login: ");
-        String login = sc.next();
+    public static boolean login() {
+        System.out.print("Enter your username: ");
+        String username = sc.next().trim();
+        System.out.print("Enter your password: ");
+        String password = sc.next().trim();
 
         try {
-            ps = dbConnection.getConnection().prepareStatement("SELECT * FROM users WHERE username=" + login);
+            ps = dbConnection.getConnection().prepareStatement("SELECT * FROM users WHERE username='" + username + "';");
             rs = ps.executeQuery();
 
-            int id;
-            String username, password;
+            String passwordCheck = "";
+            while (rs.next()) {
+                passwordCheck = rs.getString("password");
 
-            while (rs.next()){
+            }
+            System.out.println(passwordCheck);
+            return passwordCheck.equals(password);
 
-                    id = rs.getInt("id");
-                    username = rs.getString("username");
-                    password = rs.getString("password");
-
-                }
-
-           return true;
-
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //   System.out.println("Unable to login. ");
             return false;
         }
     }
 
+
 }
+
+
 
 
 

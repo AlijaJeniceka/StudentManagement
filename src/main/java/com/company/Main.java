@@ -9,14 +9,20 @@ public class Main {
 
         //ternary operator.
 
-     //  System.out.println(StudentController.addNewStudent() ? "Successfully added new student" :
-           //     "Failed to add new student");
+    //   System.out.println(StudentController.addNewStudent() ? "Successfully added new student" :
+                //"Failed to add new student");
 
      //   System.out.println(5 > 7 ? "it's true" : "it's false" );
      //   System.out.println("The student is: " + StudentController.getStudentById().getName());
 
-      // System.out.println((login.addNewUser() ? "Successfully added new user. " : "Failed to add new user. "));
-       System.out.println(login.loginIn() ? "Successfully logging in." : "Failed to login. ");
+     // System.out.println((login.addNewUser() ? "Successfully added new user. " : login.addNewUser()));
+
+      //  System.out.println(login.login() ? "Successfully logged in." : "Unable to login");
+      //  System.out.println(login.login());
+      //  StudentController.addStudentScores();
+      //  StudentController.editScores();
+     //   StudentController.deleteStudentScores();
+        StudentController.deleteStudent();
 
     }
 }
